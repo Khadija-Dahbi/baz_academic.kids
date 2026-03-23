@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>درس الإنجليزية للأطفال - أكاديمية باز</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap');
+
+    :root {
+      --pink: #ec4899;
+      --blue: #3b82f6;
+      --dark: #1e3a8a;
+      --light: #fdf2f8;
+      --text: #334155;
+      --white: #ffffff;
+      --green: #10b981;
+      --red: #ef4444;
+      --shadow: 0 10px 25px rgba(0,0,0,0.08);
+      --radius: 24px;
+      --transition: 0.3s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: linear-gradient(180deg, #fff 0%, #fff7fb 100%);
+      color: #111827;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    img, video {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 15px 8%;
+      background: var(--white);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: var(--dark);
+    }
+
+    .logo span {
+      color: var(--pink);
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      border: none;
+      cursor: pointer;
+      font-family: 'Cairo', sans-serif;
+      font-weight: 700;
+      padding: 10px 20px;
+      border-radius: 14px;
+      transition: var(--transition);
+    }
+
+    .btn-primary {
+      background: var(--dark);
+      color: white;
+    }
+
+    .btn-secondary {
+      background: var(--pink);
+      color: white;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .page-header {
+      padding: 50px 8% 20px;
+      text-align: center;
+    }
+
+    .page-header h1 {
+      font-size: 2.5rem;
+      color: var(--pink);
+      margin-bottom: 10px;
+    }
+
+    .page-header p {
+      color: var(--text);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .lesson-layout {
+      width: min(1200px, 92%);
+      margin: 30px auto 60px;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 24px;
+    }
+
+    .main-card,
+    .side-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .video-wrap {
+      background: #000;
+    }
+
+    .video-wrap video {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+    }
+
+    .lesson-content {
+      padding: 24px;
+    }
+
+    .lesson-content h2 {
+      color: var(--dark);
+      margin-bottom: 10px;
+      font-size: 1.5rem;
+    }
+
+    .lesson-content p {
+      color: var(--text);
+      margin-bottom: 15px;
+    }
+
+    .vocab-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .vocab-item {
+      background: #f8fafc;
+      border: 2px dashed #e2e8f0;
+      border-radius: 18px;
+      padding: 14px;
+      text-align: center;
+    }
+
+    .vocab-item strong {
+      display: block;
+      color: var(--pink);
+      font-size: 1.1rem;
+      margin-bottom: 4px;
+    }
+
+    .side-card {
+      padding: 24px;
+    }
+
+    .side-card h3 {
+      color: var(--dark);
+      margin-bottom: 14px;
+      font-size: 1.3rem;
+    }
+
+    .lesson-list {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .lesson-item {
+      background: #f8fafc;
+      border-radius: 16px;
+      padding: 14px;
+      border-right: 5px solid var(--pink);
+    }
+
+    .lesson-item.active {
+      background: #fff1f7;
+      border-right-color: var(--blue);
+    }
+
+    .quiz-box {
+      background: #fdf2f8;
+      border-radius: 18px;
+      padding: 18px;
+      margin-top: 20px;
+    }
+
+    .quiz-box h3 {
+      color: var(--pink);
+      margin-bottom: 12px;
+    }
+
+    .question {
+      margin-bottom: 18px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid #f1d7e4;
+    }
+
+    .question:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .question p {
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #1f2937;
+    }
+
+    .option {
+      display: block;
+      background: white;
+      padding: 10px 12px;
+      border-radius: 12px;
+      margin-bottom: 8px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .option:hover {
+      background: #f8fafc;
+    }
+
+    .option input {
+      margin-left: 8px;
+    }
+
+    .result-box {
+      margin-top: 16px;
+      padding: 14px;
+      border-radius: 14px;
+      font-weight: 700;
+      display: none;
+    }
+
+    .result-success {
+      background: #ecfdf5;
+      color: #065f46;
+    }
+
+    .result-mid {
+      background: #eff6ff;
+      color: #1e40af;
+    }
+
+    .result-low {
+      background: #fef2f2;
+      color: #991b1b;
+    }
+
+    .footer {
+      background: #0f172a;
+      color: white;
+      padding: 35px 8% 20px;
+      text-align: center;
+    }
+
+    .footer p {
+      opacity: 0.8;
+    }
+
+    @media (max-width: 992px) {
+      .lesson-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .video-wrap video {
+        height: 320px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .page-header h1 {
+        font-size: 2rem;
+      }
+
+      .video-wrap video {
+        height: 240px;
+      }
+
+      .vocab-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .navbar {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo">
+      أكاديمية <span>باز</span> <i class="fas fa-graduation-cap"></i>
+    </div>
+
+    <div class="nav-actions">
+      <a href="kids.html" class="btn btn-primary">العودة للرئيسية</a>
+      <button class="btn btn-secondary" onclick="document.getElementById('quiz').scrollIntoView({behavior:'smooth'})">
+        ابدأ التمرين
+      </button>
+    </div>
+  </nav>
+
+  <header class="page-header">
+    <h1>درس الإنجليزية للأطفال <i class="fas fa-language"></i></h1>
+    <p>
+      شاهد الفيديو، ثم تعلّم الكلمات الأساسية، وبعدها جرّب التمرين الصغير لتحصل على نتيجتك.
+    </p>
+  </header>
+
+  <main class="lesson-layout">
+    <section class="main-card">
+      <div class="video-wrap">
+        <video controls poster="images/kids-programmers.png">
+          <source src="videos/english-lesson.mp4" type="video/mp4">
+          متصفحك لا يدعم تشغيل الفيديو.
+        </video>
+      </div>
+
+      <div class="lesson-content">
+        <h2>عنوان الدرس: كلمات إنجليزية سهلة للأطفال</h2>
+        <p>
+          في هذا الدرس يتعرّف الطفل على كلمات إنجليزية بسيطة بطريقة ممتعة وسهلة.
+        </p>
+        <p>
+          بعد مشاهدة الفيديو، يمكن للطفل مراجعة الكلمات التالية ثم الإجابة عن التمرين.
+        </p>
+
+        <div class="vocab-grid">
+          <div class="vocab-item">
+            <strong>Cat</strong>
+            <span>قطة</span>
+          </div>
+          <div class="vocab-item">
+            <strong>Apple</strong>
+            <span>تفاحة</span>
+          </div>
+          <div class="vocab-item">
+            <strong>Sun</strong>
+            <span>شمس</span>
+          </div>
+          <div class="vocab-item">
+            <strong>Book</strong>
+            <span>كتاب</span>
+          </div>
+        </div>
+
+        <div id="quiz" class="quiz-box">
+          <h3>تمرين صغير بعد الدرس <i class="fas fa-star"></i></h3>
+
+          <form id="quizForm">
+            <div class="question">
+              <p>1) ما معنى كلمة Apple؟</p>
+              <label class="option"><input type="radio" name="q1" value="0"> شمس</label>
+              <label class="option"><input type="radio" name="q1" value="1"> تفاحة</label>
+              <label class="option"><input type="radio" name="q1" value="0"> كتاب</label>
+            </div>
+
+            <div class="question">
+              <p>2) ما معنى كلمة Cat؟</p>
+              <label class="option"><input type="radio" name="q2" value="0"> سيارة</label>
+              <label class="option"><input type="radio" name="q2" value="1"> قطة</label>
+              <label class="option"><input type="radio" name="q2" value="0"> نافذة</label>
+            </div>
+
+            <div class="question">
+              <p>3) ما معنى كلمة Sun؟</p>
+              <label class="option"><input type="radio" name="q3" value="1"> شمس</label>
+              <label class="option"><input type="radio" name="q3" value="0"> باب</label>
+              <label class="option"><input type="radio" name="q3" value="0"> قلم</label>
+            </div>
+
+            <button type="button" class="btn btn-secondary" onclick="checkQuiz()">تصحيح التمرين</button>
+          </form>
+
+          <div id="result" class="result-box"></div>
+        </div>
+      </div>
+    </section>
+
+    <aside class="side-card">
+      <h3>دروس الإنجليزية</h3>
+
+      <div class="lesson-list">
+        <div class="lesson-item active">
+          <strong>الدرس 1</strong>
+          <div>كلمات إنجليزية سهلة للأطفال</div>
+        </div>
+
+        <div class="lesson-item">
+          <strong>الدرس 2</strong>
+          <div>الألوان بالإنجليزية</div>
+        </div>
+
+        <div class="lesson-item">
+          <strong>الدرس 3</strong>
+          <div>أسماء الحيوانات</div>
+        </div>
+
+        <div class="lesson-item">
+          <strong>الدرس 4</strong>
+          <div>التحية والتعارف</div>
+        </div>
+      </div>
+
+      <h3>ماذا سيتعلم الطفل؟</h3>
+      <p>سيتعلم الطفل كلمات جديدة، ويستمع للنطق، ثم يجيب عن تمرين بسيط مع تصحيح فوري.</p>
+    </aside>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 أكاديمية باز | درس الإنجليزية للأطفال</p>
+  </footer>
+
+  <script>
+    function checkQuiz() {
+      const form = document.getElementById('quizForm');
+      const result = document.getElementById('result');
+
+      let score = 0;
+      let total = 3;
+
+      const q1 = form.querySelector('input[name="q1"]:checked');
+      const q2 = form.querySelector('input[name="q2"]:checked');
+      const q3 = form.querySelector('input[name="q3"]:checked');
+
+      if (!q1 || !q2 || !q3) {
+        result.style.display = 'block';
+        result.className = 'result-box result-low';
+        result.textContent = 'من فضلك أجب عن جميع الأسئلة أولًا.';
+        return;
+      }
+
+      score += Number(q1.value);
+      score += Number(q2.value);
+      score += Number(q3.value);
+
+      result.style.display = 'block';
+
+      if (score === 3) {
+        result.className = 'result-box result-success';
+        result.textContent = 'ممتاز جدًا! حصلت على 3 من 3 🌟';
+      } else if (score === 2) {
+        result.className = 'result-box result-mid';
+        result.textContent = 'أحسنت! حصلت على 2 من 3 👏';
+      } else {
+        result.className = 'result-box result-low';
+        result.textContent = 'لا بأس، حاول مرة أخرى 💛';
+      }
+    }
+  </script>
+</body>
+</html>
